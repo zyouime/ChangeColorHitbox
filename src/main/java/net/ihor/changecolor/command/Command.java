@@ -20,11 +20,10 @@ public class Command {
                 ClientCommandManager.literal("hitboxcolor")
                         .then(ClientCommandManager.literal("help")
                                 .executes(context -> {
-                                    context.getSource().sendFeedback(Text.of("Используйте argb калькулятор: https://argb-int-calculator.netlify.app/"));
-                                    context.getSource().sendFeedback(Text.of("В открывшеемся окне слева есть 4 поля: §fR§c(красный)§f; G§a(зеленый)§f; B§9(синий)§f; A§7(прозрачность)"));
-                                    context.getSource().sendFeedback(Text.of("Вы указываете в этих полях значения от §b0 до 255"));
-                                    context.getSource().sendFeedback(Text.of("После того, как вы выбрали цвет, вы запоминаете эти значения и прописываете команду"));
-                                    context.getSource().sendFeedback(Text.of("/hitboxcolor setcolor <ваше значение для §cкрасного§f> <ваше значение для §aзеленого§f> <ваше значение для §9синего§f> <ваше значение для §7прозрачности§f(чем ниже, тем менее насыщение будет цвет)>"));
+                                    context.getSource().sendFeedback(Text.of("Зайдите в браузер и впишите в поиск §f'§bcolor picker§f'"));
+                                    context.getSource().sendFeedback(Text.of("После выбора цвета ниже есть окошко RGB в котором указаны 3 числа вашего цвета"));
+                                    context.getSource().sendFeedback(Text.of("Вы запоминаете эти числа и вводите в таком же порядке в команду ниже:"));
+                                    context.getSource().sendFeedback(Text.of("/hitboxcolor setcolor <первое число> <второе число> <третье число> <уровень прозрачности от 0 до 255(чем ниже, тем менее видно будет хитбокс)>"));
                                     return 1;
                                 }))
                         .then(ClientCommandManager.literal("setcolor")
@@ -47,8 +46,8 @@ public class Command {
                         .then(ClientCommandManager.literal("getColor")
                                 .executes(context -> {
                                     context.getSource().sendFeedback(Text.of("§cred: §f" + ModConfig.configData.getRed()
-                                            + "; §9blue: §f" + ModConfig.configData.getBlue()
                                             + "; §agreen: §f" + ModConfig.configData.getGreen()
+                                            + "; §9blue: §f" + ModConfig.configData.getBlue()
                                             + "; §7alpha: §f" + ModConfig.configData.getAlpha()));
                                     return 1;
                                 }))
