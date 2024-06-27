@@ -1,0 +1,14 @@
+{
+  "mappings": {
+    "net/ihor/changecolor/mixin/EntityRendererDispatcherMixin": {
+      "renderHitbox": "Lnet/minecraft/class_898;method_3956(Lnet/minecraft/class_4587;Lnet/minecraft/class_4588;Lnet/minecraft/class_1297;F)V"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "net/ihor/changecolor/mixin/EntityRendererDispatcherMixin": {
+        "renderHitbox": "Lnet/minecraft/class_898;method_3956(Lnet/minecraft/class_4587;Lnet/minecraft/class_4588;Lnet/minecraft/class_1297;F)V"
+      }
+    }
+  }
+}

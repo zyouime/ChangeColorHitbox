@@ -1,0 +1,8 @@
+{
+  "red": 0.0,
+  "green": 200.0,
+  "blue": 10.0,
+  "alpha": 255.0,
+  "renderEyes": false,
+  "renderDirection": true
+}

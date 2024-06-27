@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "changecolor",
+  "version": "${version}",
+  "name": "ChangeHitboxColor",
+  "description": "Меняет цвет хитбоксов",
+  "authors": ["zyouime13"],
+  "contact": {
+  },
+  "license": "MIT",
+  "icon": "assets/changecolor/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "net.ihor.changecolor.client.ChangeColorClient"
+    ],
+    "main": [
+      "net.ihor.changecolor.ChangeColor"
+    ]
+  },
+  "mixins": [
+    "changecolor.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
