@@ -20,7 +20,6 @@ public class Menu extends Screen {
         this.parent = screen;
     }
 
-
     @Override
     protected void init() {
         ModConfig.loadConfig();
@@ -57,7 +56,7 @@ public class Menu extends Screen {
     public void render(DrawContext context, int mouseX, int mouseY, float tickDelta) {
         ModConfig.loadConfig();
         this.renderBackground(context);
-        context.drawCenteredTextWithShadow(this.textRenderer, this.title, width / 2, height / 2 - 120, Color.WHITE.getRGB());
+        context.drawCenteredTextWithShadow(this.textRenderer, this.title, width / 2, height / 2 - 115, Color.WHITE.getRGB());
         Color BACKGROUND = new Color(166, 166, 166, 200);
         Color darkGray = new Color(100, 100, 100, 179);
         Color shadow = new Color(0, 0, 0, 255);
@@ -79,20 +78,20 @@ public class Menu extends Screen {
 
         context.fill(this.red.getX() + 1, this.red.getY() + 1, this.red.getX() + this.red.getWidth() - 1, this.red.getY() + this.red.getHeight() - 1, Color.OPAQUE);
         context.drawText(this.textRenderer, "Red: ", this.red.getX() + 20, this.red.getY() - 10, Color.RED.getRGB(), false);
-        context.drawText(this.textRenderer, String.format("%.1f", this.red.getValue()), this.red.getX() + 42, this.red.getY() - 10, Color.WHITE.getRGB(), false);
+        context.drawText(this.textRenderer, String.valueOf((int) this.red.getValue()), this.red.getX() + 42, this.red.getY() - 10, Color.WHITE.getRGB(), false);
 
         context.fill(this.green.getX() + 1, this.green.getY() + 1, this.green.getX() + this.green.getWidth() - 1, this.green.getY() + this.green.getHeight() - 1, Color.OPAQUE);
         context.drawText(this.textRenderer, "Green: ", this.green.getX() + 15, this.green.getY() - 10, Color.GREEN.getRGB(), false);
-        context.drawText(this.textRenderer, String.format("%.1f", this.green.getValue()), this.green.getX() + 49, this.green.getY() - 10, Color.WHITE.getRGB(), false);
+        context.drawText(this.textRenderer, String.valueOf((int) this.green.getValue()), this.green.getX() + 49, this.green.getY() - 10, Color.WHITE.getRGB(), false);
 
         context.fill(this.blue.getX() + 1, this.blue.getY() + 1, this.blue.getX() + this.blue.getWidth() - 1, this.blue.getY() + this.blue.getHeight() - 1, Color.OPAQUE);
         context.drawText(this.textRenderer, "Blue: ", this.blue.getX() + 20, this.blue.getY() - 10, Color.BLUE.getRGB(), false);
-        context.drawText(this.textRenderer, String.format("%.1f", this.blue.getValue()), this.blue.getX() + 45, this.blue.getY() - 10, Color.WHITE.getRGB(), false);
+        context.drawText(this.textRenderer, String.valueOf((int) this.blue.getValue()), this.blue.getX() + 45, this.blue.getY() - 10, Color.WHITE.getRGB(), false);
 
         context.fill(this.alpha.getX() + 1, this.alpha.getY() + 1, this.alpha.getX() + this.alpha.getWidth() - 1, this.alpha.getY() + this.alpha.getHeight() - 1, Color.OPAQUE);
         Color alpha = new Color(245, 245, 245, 130);
         context.drawText(this.textRenderer, "Alpha: ", this.alpha.getX() + 15, this.alpha.getY() - 10, alpha.getRGB(), false);
-        context.drawText(this.textRenderer, String.format("%.1f", this.alpha.getValue()), this.alpha.getX() + 46, this.alpha.getY() - 10, Color.WHITE.getRGB(), false);
+        context.drawText(this.textRenderer, String.valueOf((int) this.alpha.getValue()), this.alpha.getX() + 46, this.alpha.getY() - 10, Color.WHITE.getRGB(), false);
 
         int x1 = width / 2 - 140;
         int x2 = width / 2 - 60;
