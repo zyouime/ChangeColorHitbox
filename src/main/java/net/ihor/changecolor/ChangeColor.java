@@ -3,7 +3,6 @@ package net.ihor.changecolor;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.ihor.changecolor.command.Command;
 import net.ihor.changecolor.config.ModConfig;
 import net.ihor.changecolor.menu.Menu;
 import net.minecraft.client.option.KeyBinding;
@@ -16,7 +15,6 @@ public class ChangeColor implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        Command.register();
         try {
             ModConfig.register();
         } catch (IOException e) {
