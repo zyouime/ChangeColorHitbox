@@ -12,6 +12,8 @@ public class ModConfig {
     public static final File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), "changecolor-config.json");
     public static ConfigData configData;
 
+
+
     public static void loadConfig() {
         try (FileReader fileReader = new FileReader(file)) {
             ConfigData configData1 = gson.fromJson(fileReader, ConfigData.class);

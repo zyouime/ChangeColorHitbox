@@ -7,9 +7,14 @@ import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonPart;
+import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.passive.PassiveEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -25,10 +30,49 @@ public class EntityRendererDispatcherMixin {
 
     @Inject(method = "renderHitbox", at = @At("HEAD"), cancellable = true)
     private static void render(MatrixStack matrices, VertexConsumer vertices, Entity entity, float tickDelta, CallbackInfo ci) {
-        ci.cancel();
         ModConfig.loadConfig();
         Box box = entity.getBoundingBox().offset(-entity.getX(), -entity.getY(), -entity.getZ());
-        WorldRenderer.drawBox(matrices, vertices, box, ModConfig.configData.getRed() / 255.0f, ModConfig.configData.getGreen() / 255.0f, ModConfig.configData.getBlue() / 255.0f, ModConfig.configData.getAlpha() / 255.0f);
+        if (entity instanceof PlayerEntity) {
+            if (ModConfig.configData.isEnableRenderPlayer()) {
+                WorldRenderer.drawBox(matrices, vertices, box,
+                        ModConfig.configData.getPlayerColor()[0] / 255.0f,
+                        ModConfig.configData.getPlayerColor()[1] / 255.0f,
+                        ModConfig.configData.getPlayerColor()[2] / 255.0f,
+                        ModConfig.configData.getPlayerColor()[3] / 255.0f);
+            }
+        } else if (entity instanceof PassiveEntity) {
+            if (ModConfig.configData.isEnableRenderPassive()) {
+                WorldRenderer.drawBox(matrices, vertices, box,
+                        ModConfig.configData.getPassiveColor()[0] / 255.0f,
+                        ModConfig.configData.getPassiveColor()[1] / 255.0f,
+                        ModConfig.configData.getPassiveColor()[2] / 255.0f,
+                        ModConfig.configData.getPassiveColor()[3] / 255.0f);
+            }
+        } else if (entity instanceof HostileEntity) {
+            if (ModConfig.configData.isEnableRenderMonster()) {
+                WorldRenderer.drawBox(matrices, vertices, box,
+                        ModConfig.configData.getMonsterColor()[0] / 255.0f,
+                        ModConfig.configData.getMonsterColor()[1] / 255.0f,
+                        ModConfig.configData.getMonsterColor()[2] / 255.0f,
+                        ModConfig.configData.getMonsterColor()[3] / 255.0f);
+            }
+        } else if (entity instanceof ItemEntity) {
+            if (ModConfig.configData.isEnableRenderDrop()) {
+                WorldRenderer.drawBox(matrices, vertices, box,
+                        ModConfig.configData.getDropColor()[0] / 255.0f,
+                        ModConfig.configData.getDropColor()[1] / 255.0f,
+                        ModConfig.configData.getDropColor()[2] / 255.0f,
+                        ModConfig.configData.getDropColor()[3] / 255.0f);
+            }
+        } else if (entity instanceof ProjectileEntity) {
+            if (ModConfig.configData.isEnableRenderProjectile()) {
+                WorldRenderer.drawBox(matrices, vertices, box,
+                        ModConfig.configData.getProjectileColor()[0] / 255.0f,
+                        ModConfig.configData.getProjectileColor()[1] / 255.0f,
+                        ModConfig.configData.getProjectileColor()[2] / 255.0f,
+                        ModConfig.configData.getProjectileColor()[3] / 255.0f);
+            }
+        }
         if (entity instanceof EnderDragonEntity) {
             double d = -MathHelper.lerp((double)tickDelta, entity.lastRenderX, entity.getX());
             double e = -MathHelper.lerp((double)tickDelta, entity.lastRenderY, entity.getY());
@@ -55,5 +99,6 @@ public class EntityRendererDispatcherMixin {
            vertices.vertex(matrix4f, 0.0f, entity.getStandingEyeHeight(), 0.0f).color(0, 0, 255, 255).normal(matrix3f, (float)vec3d.x, (float)vec3d.y, (float)vec3d.z).next();
            vertices.vertex(matrix4f, (float)(vec3d.x * 2.0), (float)((double)entity.getStandingEyeHeight() + vec3d.y * 2.0), (float)(vec3d.z * 2.0)).color(0, 0, 255, 255).normal(matrix3f, (float)vec3d.x, (float)vec3d.y, (float)vec3d.z).next();
        }
+       ci.cancel();
     }
 }

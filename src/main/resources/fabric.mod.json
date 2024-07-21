@@ -3,7 +3,7 @@
   "id": "changecolor",
   "version": "${version}",
   "name": "ChangeHitboxColor",
-  "description": "Меняет цвет хитбоксов",
+  "description": "Меняет цвет хитбоксов. Открыть меню можно нажав F12 в игре.",
   "authors": ["zyouime13"],
   "contact": {
   },

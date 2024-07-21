@@ -4,7 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.ihor.changecolor.config.ModConfig;
-import net.ihor.changecolor.menu.Menu;
+import net.ihor.changecolor.menu.MainMenu;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import org.lwjgl.glfw.GLFW;
@@ -22,7 +22,7 @@ public class ChangeColor implements ModInitializer {
         }
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (key.wasPressed()) {
-                client.setScreen(new Menu(client.currentScreen));
+                client.setScreen(new MainMenu(client.currentScreen));
             }
         });
     }

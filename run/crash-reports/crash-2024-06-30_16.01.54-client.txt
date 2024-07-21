@@ -8,7 +8,7 @@ java.lang.IllegalArgumentException: Color parameter outside of expected range: A
 	at java.desktop/java.awt.Color.testColorValueRange(Color.java:312)
 	at java.desktop/java.awt.Color.<init>(Color.java:397)
 	at java.desktop/java.awt.Color.<init>(Color.java:492)
-	at net.ihor.changecolor.menu.Menu.render(Menu.java:85)
+	at net.ihor.changecolor.menu.MainMenu.render(Menu.java:85)
 	at net.minecraft.client.gui.screen.Screen.renderWithTooltip(Screen.java:110)
 	at net.minecraft.client.render.GameRenderer.render(GameRenderer.java:945)
 	at net.minecraft.client.MinecraftClient.render(MinecraftClient.java:1219)
@@ -29,12 +29,12 @@ Stacktrace:
 	at java.desktop/java.awt.Color.testColorValueRange(Color.java:312)
 	at java.desktop/java.awt.Color.<init>(Color.java:397)
 	at java.desktop/java.awt.Color.<init>(Color.java:492)
-	at net.ihor.changecolor.menu.Menu.render(Menu.java:85)
+	at net.ihor.changecolor.menu.MainMenu.render(Menu.java:85)
 	at net.minecraft.client.gui.screen.Screen.renderWithTooltip(Screen.java:110)
 
 -- Screen render details --
 Details:
-	Screen name: net.ihor.changecolor.menu.Menu
+	Screen name: net.ihor.changecolor.menu.MainMenu
 	Mouse location: Scaled: (324, 60). Absolute: (649.000000, 120.000000)
 	Screen size: Scaled: (427, 240). Absolute: (854, 480). Scale factor of 2.000000
 Stacktrace:

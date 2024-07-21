@@ -1,8 +1,39 @@
 {
-  "red": 255.0,
-  "green": 144.32292,
-  "blue": 0.0,
-  "alpha": 255.0,
-  "renderEyes": false,
-  "renderDirection": false
+  "playerColor": [
+    17.163462,
+    255.0,
+    95.625,
+    255.0
+  ],
+  "enableRenderPlayer": true,
+  "monsterColor": [
+    83.36539,
+    85.81731,
+    250.09616,
+    255.0
+  ],
+  "enableRenderMonster": true,
+  "passiveColor": [
+    20.841347,
+    229.2548,
+    255.0,
+    255.0
+  ],
+  "enableRenderPassive": true,
+  "dropColor": [
+    255.0,
+    0.0,
+    0.0,
+    255.0
+  ],
+  "enableRenderDrop": false,
+  "projectileColor": [
+    255.0,
+    255.0,
+    255.0,
+    251.32211
+  ],
+  "enableRenderProjectile": true,
+  "renderDirection": false,
+  "renderEyes": false
 }
