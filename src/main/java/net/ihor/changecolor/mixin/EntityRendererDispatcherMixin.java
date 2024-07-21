@@ -14,6 +14,7 @@ import net.minecraft.entity.boss.dragon.EnderDragonPart;
 import net.minecraft.entity.mob.GhastEntity;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.PhantomEntity;
+import net.minecraft.entity.mob.SlimeEntity;
 import net.minecraft.entity.passive.BatEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -51,7 +52,7 @@ public class EntityRendererDispatcherMixin {
                         ModConfig.configData.getPassiveColor()[2] / 255.0f,
                         ModConfig.configData.getPassiveColor()[3] / 255.0f);
             }
-        } else if (entity instanceof HostileEntity || entity instanceof GhastEntity || entity instanceof PhantomEntity) {
+        } else if (entity instanceof HostileEntity || entity instanceof GhastEntity || entity instanceof PhantomEntity || entity instanceof SlimeEntity) {
             if (ModConfig.configData.isEnableRenderMonster()) {
                 WorldRenderer.drawBox(matrices, vertices, box,
                         ModConfig.configData.getMonsterColor()[0] / 255.0f,
