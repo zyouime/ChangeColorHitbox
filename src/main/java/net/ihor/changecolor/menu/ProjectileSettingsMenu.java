@@ -1,18 +1,10 @@
 package net.ihor.changecolor.menu;
 
 import net.ihor.changecolor.config.ModConfig;
-import net.ihor.changecolor.menu.entity.RenderEntityToMenu;
 import net.ihor.changecolor.menu.widgets.HSliderWidget;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.mob.EndermanEntity;
-import net.minecraft.entity.passive.VillagerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -32,7 +24,6 @@ public class ProjectileSettingsMenu extends Screen {
 
     @Override
     protected void init() {
-        ModConfig.loadConfig();
         Color red1 = new Color(255, 0, 0, 128);
         Color green1 = new Color(0, 255, 0, 128);
         Color blue1 = new Color(0, 0, 255, 128);
@@ -42,6 +33,7 @@ public class ProjectileSettingsMenu extends Screen {
         blue = new HSliderWidget(width / 2 - 2, height / 2 - 33, 60, 16, Text.empty(), ModConfig.configData.getProjectileColor()[2], 0f, 255.0f, blue1, HSliderWidget.EntityType.PROJECTILE, HSliderWidget.ColorType.BLUE);
         alpha = new HSliderWidget(width / 2 - 2, height / 2 - 7, 60, 16, Text.empty(), ModConfig.configData.getProjectileColor()[3], 0.0f, 255.0f, gray1, HSliderWidget.EntityType.PROJECTILE, HSliderWidget.ColorType.ALPHA);
         ButtonWidget buttonWidget = ButtonWidget.builder(Text.of((ModConfig.configData.isEnableRenderProjectile()) ? "§aEnabled" : "§cDisabled"), button -> {
+            ModConfig.loadConfig();
             boolean flag = ModConfig.configData.isEnableRenderProjectile();
             flag = !flag;
             ModConfig.configData.setEnableRenderProjectile(flag);
@@ -62,7 +54,6 @@ public class ProjectileSettingsMenu extends Screen {
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        ModConfig.loadConfig();
         this.renderBackground(context);
         int x1 = width / 2 - 150 / 2;
         int x2 = width / 2 + 150 / 2;

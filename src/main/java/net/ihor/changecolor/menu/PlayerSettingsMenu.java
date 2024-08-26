@@ -26,7 +26,6 @@ public class PlayerSettingsMenu extends Screen {
 
     @Override
     protected void init() {
-        ModConfig.loadConfig();
         Color red1 = new Color(255, 0, 0, 128);
         Color green1 = new Color(0, 255, 0, 128);
         Color blue1 = new Color(0, 0, 255, 128);
@@ -36,6 +35,7 @@ public class PlayerSettingsMenu extends Screen {
         blue = new HSliderWidget(width / 2 - 2, height / 2 - 33, 60, 16, Text.empty(), ModConfig.configData.getPlayerColor()[2], 0f, 255.0f, blue1, HSliderWidget.EntityType.PLAYER, HSliderWidget.ColorType.BLUE);
         alpha = new HSliderWidget(width / 2 - 2, height / 2 - 7, 60, 16, Text.empty(), ModConfig.configData.getPlayerColor()[3], 0.0f, 255.0f, gray1, HSliderWidget.EntityType.PLAYER, HSliderWidget.ColorType.ALPHA);
         ButtonWidget buttonWidget = ButtonWidget.builder(Text.of((ModConfig.configData.isEnableRenderPlayer()) ? "§aEnabled" : "§cDisabled"), button -> {
+            ModConfig.loadConfig();
             boolean flag = ModConfig.configData.isEnableRenderPlayer();
             flag = !flag;
             ModConfig.configData.setEnableRenderPlayer(flag);
@@ -56,7 +56,6 @@ public class PlayerSettingsMenu extends Screen {
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        ModConfig.loadConfig();
         this.renderBackground(context);
         int x1 = width / 2 - 150 / 2;
         int x2 = width / 2 + 150 / 2;

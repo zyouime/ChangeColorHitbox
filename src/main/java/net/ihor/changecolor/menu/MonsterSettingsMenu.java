@@ -28,7 +28,6 @@ public class MonsterSettingsMenu extends Screen {
 
     @Override
     protected void init() {
-        ModConfig.loadConfig();
         Color red1 = new Color(255, 0, 0, 128);
         Color green1 = new Color(0, 255, 0, 128);
         Color blue1 = new Color(0, 0, 255, 128);
@@ -38,6 +37,7 @@ public class MonsterSettingsMenu extends Screen {
         blue = new HSliderWidget(width / 2 - 2, height / 2 - 33, 60, 16, Text.empty(), ModConfig.configData.getMonsterColor()[2], 0f, 255.0f, blue1, HSliderWidget.EntityType.MONSTER, HSliderWidget.ColorType.BLUE);
         alpha = new HSliderWidget(width / 2 - 2, height / 2 - 7, 60, 16, Text.empty(), ModConfig.configData.getMonsterColor()[3], 0.0f, 255.0f, gray1, HSliderWidget.EntityType.MONSTER, HSliderWidget.ColorType.ALPHA);
         ButtonWidget buttonWidget = ButtonWidget.builder(Text.of((ModConfig.configData.isEnableRenderMonster()) ? "§aEnabled" : "§cDisabled"), button -> {
+            ModConfig.loadConfig();
             boolean flag = ModConfig.configData.isEnableRenderMonster();
             flag = !flag;
             ModConfig.configData.setEnableRenderMonster(flag);

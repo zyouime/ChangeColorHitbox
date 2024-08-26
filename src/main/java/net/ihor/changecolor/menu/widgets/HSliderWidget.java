@@ -207,7 +207,6 @@ public class HSliderWidget extends SliderWidget {
 
     @Override
     protected void updateMessage() {
-
     }
 
 }

@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChangeColor.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ChangeColor.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChangeColor.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ChangeColor.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/net.ihor.ChangeColor.main.iml" filepath="$PROJECT_DIR$/.idea/modules/net.ihor.ChangeColor.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/net.ihor.ChangeColor.test.iml" filepath="$PROJECT_DIR$/.idea/modules/net.ihor.ChangeColor.test.iml" />
     </modules>
   </component>
 </project>

@@ -1,22 +1,22 @@
 {
   "playerColor": [
-    17.163462,
     255.0,
+    150.79327,
     95.625,
     255.0
   ],
   "enableRenderPlayer": true,
   "monsterColor": [
-    83.36539,
-    85.81731,
-    250.09616,
+    128.72597,
+    30.649038,
+    255.0,
     255.0
   ],
   "enableRenderMonster": true,
   "passiveColor": [
     20.841347,
     229.2548,
-    255.0,
+    120.14423,
     255.0
   ],
   "enableRenderPassive": true,
@@ -26,12 +26,12 @@
     0.0,
     255.0
   ],
-  "enableRenderDrop": false,
+  "enableRenderDrop": true,
   "projectileColor": [
     255.0,
     255.0,
-    255.0,
-    251.32211
+    127.5,
+    255.0
   ],
   "enableRenderProjectile": true,
   "renderDirection": false,

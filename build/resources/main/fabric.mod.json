@@ -9,7 +9,7 @@
   },
   "license": "MIT",
   "icon": "assets/changecolor/icon.png",
-  "environment": "*",
+  "environment": "client",
   "entrypoints": {
     "client": [
       "net.ihor.changecolor.client.ChangeColorClient"

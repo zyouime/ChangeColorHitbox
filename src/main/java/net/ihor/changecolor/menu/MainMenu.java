@@ -1,5 +1,6 @@
 package net.ihor.changecolor.menu;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.ihor.changecolor.config.ModConfig;
 import net.ihor.changecolor.menu.widgets.CButtonWidget;
 import net.ihor.changecolor.menu.widgets.IButtonWidget;
@@ -27,7 +28,6 @@ public class MainMenu extends Screen {
     protected void init() {
         int menuX = width / 2 + 150 / 2;
         int menuX2 = width / 2 - 150 / 2;
-        ModConfig.loadConfig();
         ButtonWidget buttonWidget1 = new IButtonWidget(width / 2 - 75, height / 2 - 100, menuX - menuX2, 20, Text.empty(), button -> {}, IButtonWidget.DEFAULT_NARRATION_SUPPLIER);
         ButtonWidget buttonWidget2 = new IButtonWidget(width / 2 - 75, height / 2 - 70, menuX - menuX2, 20, Text.empty(), button -> {}, IButtonWidget.DEFAULT_NARRATION_SUPPLIER);
         ButtonWidget buttonWidget3 = new IButtonWidget(width / 2 - 75, height / 2 - 40, menuX - menuX2, 20, Text.empty(), button -> {}, IButtonWidget.DEFAULT_NARRATION_SUPPLIER);
@@ -51,6 +51,7 @@ public class MainMenu extends Screen {
             client.setScreen(new ProjectileSettingsMenu(this.parent));
         }, CButtonWidget.DEFAULT_NARRATION_SUPPLIER, CButtonWidget.EntityTypeColor.PROJECTILE);
         ButtonWidget buttonWidget13 = ButtonWidget.builder(Text.of((ModConfig.configData.isRenderEyes()) ? "§aEnabled" : "§cDisabled"), button -> {
+            ModConfig.loadConfig();
             boolean flag = ModConfig.configData.isRenderEyes();
             flag = !flag;
             ModConfig.configData.setRenderEyes(flag);
@@ -58,6 +59,7 @@ public class MainMenu extends Screen {
             ModConfig.saveConfig();
         }).dimensions(width / 2 + 22, height / 2 - 99, 50, 17).build();
         ButtonWidget buttonWidget14 = ButtonWidget.builder(Text.of((ModConfig.configData.isRenderDirection()) ? "§aEnabled" : "§cDisabled"), button -> {
+            ModConfig.loadConfig();
             boolean flag = ModConfig.configData.isRenderDirection();
             flag = !flag;
             ModConfig.configData.setRenderDirection(flag);

@@ -42,6 +42,8 @@ public class ModConfig {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        } else {
+            loadConfig();
         }
     }
 }
