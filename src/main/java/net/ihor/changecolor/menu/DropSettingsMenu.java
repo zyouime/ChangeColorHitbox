@@ -1,14 +1,11 @@
 package net.ihor.changecolor.menu;
 
 import net.ihor.changecolor.config.ModConfig;
-import net.ihor.changecolor.menu.entity.RenderEntityToMenu;
 import net.ihor.changecolor.menu.widgets.HSliderWidget;
+import net.ihor.changecolor.util.Render;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.mob.EndermanEntity;
-import net.minecraft.entity.passive.TraderLlamaEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -76,9 +73,9 @@ public class DropSettingsMenu extends Screen {
         int b = (int) ModConfig.configData.getDropColor()[2];
         int a = (int) ModConfig.configData.getDropColor()[3];
         Color color = new Color(r, g, b, a);
-        drawShadowString(context, 0.7f, Text.of("§lColor:"), (float) width / 2 - 17, (float) height / 2 - 95, color.getRGB());
-        drawShadowString(context, 0.7f, Text.of("§r§c" + (int) red.getValue() + "§f, §r§a" + (int) green.getValue() + "§f, §r§9" + (int) blue.getValue() + "§f, §r§7" + (int) alpha.getValue()), (float) width / 2 + 11, (float) height / 2 - 95, Color.OPAQUE);
-        drawShadowString(context, 0.7f, Text.of("Render hitbox:"), (float) width / 2 - 66, (float) height / 2 - 17, Color.WHITE.getRGB());
+        Render.drawShadowString(context, textRenderer, 0.7f, Text.of("§lColor:"), (float) width / 2 - 17, (float) height / 2 - 95, color.getRGB());
+        Render.drawShadowString(context, textRenderer, 0.7f, Text.of("§r§c" + (int) red.getValue() + "§f, §r§a" + (int) green.getValue() + "§f, §r§9" + (int) blue.getValue() + "§f, §r§7" + (int) alpha.getValue()), (float) width / 2 + 11, (float) height / 2 - 95, Color.OPAQUE);
+        Render.drawShadowString(context, textRenderer, 0.7f, Text.of("Render hitbox:"), (float) width / 2 - 66, (float) height / 2 - 17, Color.WHITE.getRGB());
         int redValue = (int) this.red.getValue();
         int greenValue = (int) this.green.getValue();
         int blueValue = (int) this.blue.getValue();
@@ -98,11 +95,5 @@ public class DropSettingsMenu extends Screen {
         context.fill(xx1, yy1, xx1 + 1, yy2, Color.WHITE.getRGB());
         context.fill(xx2 - 1, yy1, xx2, yy2, Color.WHITE.getRGB());
         super.render(context, mouseX, mouseY, delta);
-    }
-    public void drawShadowString(DrawContext context, float scale, Text text, float x, float y, int color) {
-        context.getMatrices().push();
-        context.getMatrices().scale(scale, scale, scale);
-        context.drawTextWithShadow(textRenderer, text, (int) (x / scale), (int) (y / scale), color);
-        context.getMatrices().pop();
     }
 }

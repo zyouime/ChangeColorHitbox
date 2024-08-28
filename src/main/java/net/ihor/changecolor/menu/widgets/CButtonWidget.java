@@ -27,7 +27,6 @@ public class CButtonWidget extends ButtonWidget {
     }
     @Override
     protected void renderButton(DrawContext context, int mouseX, int mouseY, float delta) {
-        ModConfig.loadConfig();
         int x1 = this.getX();
         int y1 = this.getY();
         int x2 = x1 + width;

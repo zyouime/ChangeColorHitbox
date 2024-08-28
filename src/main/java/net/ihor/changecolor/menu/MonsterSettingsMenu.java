@@ -1,14 +1,13 @@
 package net.ihor.changecolor.menu;
 
 import net.ihor.changecolor.config.ModConfig;
-import net.ihor.changecolor.menu.entity.RenderEntityToMenu;
+import net.ihor.changecolor.util.Render;
 import net.ihor.changecolor.menu.widgets.HSliderWidget;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.ZombieEntity;
-import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -58,7 +57,6 @@ public class MonsterSettingsMenu extends Screen {
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        ModConfig.loadConfig();
         this.renderBackground(context);
         int x1 = width / 2 - 150 / 2;
         int x2 = width / 2 + 150 / 2;
@@ -76,17 +74,11 @@ public class MonsterSettingsMenu extends Screen {
         int b = (int) ModConfig.configData.getMonsterColor()[2];
         int a = (int) ModConfig.configData.getMonsterColor()[3];
         Color color = new Color(r, g, b, a);
-        drawShadowString(context, 0.7f, Text.of("§lColor:"), (float) width / 2 - 17, (float) height / 2 - 95, color.getRGB());
-        drawShadowString(context, 0.7f, Text.of("§r§c" + (int) red.getValue() + "§f, §r§a" + (int) green.getValue() + "§f, §r§9" + (int) blue.getValue() + "§f, §r§7" + (int) alpha.getValue()), (float) width / 2 + 11, (float) height / 2 - 95, Color.OPAQUE);
-        drawShadowString(context, 0.7f, Text.of("Render hitbox:"), (float) width / 2 - 66, (float) height / 2 - 17, Color.WHITE.getRGB());
+        Render.drawShadowString(context, textRenderer, 0.7f, Text.of("§lColor:"), (float) width / 2 - 17, (float) height / 2 - 95, color.getRGB());
+        Render.drawShadowString(context, textRenderer, 0.7f, Text.of("§r§c" + (int) red.getValue() + "§f, §r§a" + (int) green.getValue() + "§f, §r§9" + (int) blue.getValue() + "§f, §r§7" + (int) alpha.getValue()), (float) width / 2 + 11, (float) height / 2 - 95, Color.OPAQUE);
+        Render.drawShadowString(context, textRenderer, 0.7f, Text.of("Render hitbox:"), (float) width / 2 - 66, (float) height / 2 - 17, Color.WHITE.getRGB());
         ZombieEntity zombieEntity = new ZombieEntity(EntityType.ZOMBIE, client.world);
-        RenderEntityToMenu.drawEntity(width / 2 - 43, height / 2 - 30, 1.5f * 20, zombieEntity);
+        Render.drawEntity(width / 2 - 43, height / 2 - 30, 1.5f * 20, zombieEntity);
         super.render(context, mouseX, mouseY, delta);
-    }
-    public void drawShadowString(DrawContext context, float scale, Text text, float x, float y, int color) {
-        context.getMatrices().push();
-        context.getMatrices().scale(scale, scale, scale);
-        context.drawTextWithShadow(textRenderer, text, (int) (x / scale), (int) (y / scale), color);
-        context.getMatrices().pop();
     }
 }

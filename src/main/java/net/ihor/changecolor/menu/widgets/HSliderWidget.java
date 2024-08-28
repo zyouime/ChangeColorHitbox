@@ -46,122 +46,7 @@ public class HSliderWidget extends SliderWidget {
     protected void applyValue() {
         ModConfig.loadConfig();
         float newValue = getValue();
-        if (entityType == EntityType.PLAYER) {
-            switch (colorType) {
-                case RED -> {
-                    float[] temp = ModConfig.configData.getPlayerColor();
-                    temp[0] = newValue;
-                    ModConfig.configData.setPlayerColor(temp);
-                }
-                case GREEN -> {
-                    float[] temp = ModConfig.configData.getPlayerColor();
-                    temp[1] = newValue;
-                    ModConfig.configData.setPlayerColor(temp);
-                }
-                case BLUE -> {
-                    float[] temp = ModConfig.configData.getPlayerColor();
-                    temp[2] = newValue;
-                    ModConfig.configData.setPlayerColor(temp);
-                }
-                case ALPHA -> {
-                    float[] temp = ModConfig.configData.getPlayerColor();
-                    temp[3] = newValue;
-                    ModConfig.configData.setPlayerColor(temp);
-                }
-            }
-        } else if (entityType == EntityType.PASSIVE) {
-            switch (colorType) {
-                case RED -> {
-                    float[] temp = ModConfig.configData.getPassiveColor();
-                    temp[0] = newValue;
-                    ModConfig.configData.setPassiveColor(temp);
-                }
-                case GREEN -> {
-                    float[] temp = ModConfig.configData.getPassiveColor();
-                    temp[1] = newValue;
-                    ModConfig.configData.setPassiveColor(temp);
-                }
-                case BLUE -> {
-                    float[] temp = ModConfig.configData.getPassiveColor();
-                    temp[2] = newValue;
-                    ModConfig.configData.setPassiveColor(temp);
-                }
-                case ALPHA -> {
-                    float[] temp = ModConfig.configData.getPassiveColor();
-                    temp[3] = newValue;
-                    ModConfig.configData.setPassiveColor(temp);
-                }
-            }
-        } else if (entityType == EntityType.MONSTER) {
-            switch (colorType) {
-                case RED -> {
-                    float[] temp = ModConfig.configData.getMonsterColor();
-                    temp[0] = newValue;
-                    ModConfig.configData.setMonsterColor(temp);
-                }
-                case GREEN -> {
-                    float[] temp = ModConfig.configData.getMonsterColor();
-                    temp[1] = newValue;
-                    ModConfig.configData.setMonsterColor(temp);
-                }
-                case BLUE -> {
-                    float[] temp = ModConfig.configData.getMonsterColor();
-                    temp[2] = newValue;
-                    ModConfig.configData.setMonsterColor(temp);
-                }
-                case ALPHA -> {
-                    float[] temp = ModConfig.configData.getMonsterColor();
-                    temp[3] = newValue;
-                    ModConfig.configData.setMonsterColor(temp);
-                }
-            }
-        } else if (entityType == EntityType.DROP) {
-            switch (colorType) {
-                case RED -> {
-                    float[] temp = ModConfig.configData.getDropColor();
-                    temp[0] = newValue;
-                    ModConfig.configData.setDropColor(temp);
-                }
-                case GREEN -> {
-                    float[] temp = ModConfig.configData.getDropColor();
-                    temp[1] = newValue;
-                    ModConfig.configData.setDropColor(temp);
-                }
-                case BLUE -> {
-                    float[] temp = ModConfig.configData.getDropColor();
-                    temp[2] = newValue;
-                    ModConfig.configData.setDropColor(temp);
-                }
-                case ALPHA -> {
-                    float[] temp = ModConfig.configData.getDropColor();
-                    temp[3] = newValue;
-                    ModConfig.configData.setDropColor(temp);
-                }
-            }
-        } else if (entityType == EntityType.PROJECTILE) {
-            switch (colorType) {
-                case RED -> {
-                    float[] temp = ModConfig.configData.getProjectileColor();
-                    temp[0] = newValue;
-                    ModConfig.configData.setProjectileColor(temp);
-                }
-                case GREEN -> {
-                    float[] temp = ModConfig.configData.getProjectileColor();
-                    temp[1] = newValue;
-                    ModConfig.configData.setProjectileColor(temp);
-                }
-                case BLUE -> {
-                    float[] temp = ModConfig.configData.getProjectileColor();
-                    temp[2] = newValue;
-                    ModConfig.configData.setProjectileColor(temp);
-                }
-                case ALPHA -> {
-                    float[] temp = ModConfig.configData.getProjectileColor();
-                    temp[3] = newValue;
-                    ModConfig.configData.setProjectileColor(temp);
-                }
-            }
-        }
+        updateColor(entityType, colorType, newValue);
         ModConfig.saveConfig();
         updateMessage();
     }
@@ -169,6 +54,7 @@ public class HSliderWidget extends SliderWidget {
     public float getValue() {
         return (float) (this.value * (max - min) + min);
     }
+
     @Override
     public void renderButton(DrawContext context, int mouseX, int mouseY, float delta) {
         int x1 = this.getX();
@@ -198,15 +84,47 @@ public class HSliderWidget extends SliderWidget {
             context.fill(x1, y1 + i, x1 + 1, y1 + i + 1, color);
             context.fill(x2, y1 + height - i, x2 - 1, y1 + height - i - 1, color);
         }
-        int XX = this.getX() + (int) (value * (width - 10));
-        int YY = this.getY();
-        int Y3 = YY + height;
-        context.drawNineSlicedTexture(TEXTURE, XX + 1, this.getY() + 1, 8, 14, 20, 4, 200, 20, 0, 40);
-        context.fill(getX() + 1, YY + 1, XX + 1, Y3 - 1, color.getRGB());
+        int x3 = this.getX() + (int) (value * (width - 10));
+        int y3 = this.getY();
+        int y4 = y3 + height;
+        context.drawNineSlicedTexture(TEXTURE, x3 + 1, y3 + 1, 8, 14, 20, 4, 200, 20, 0, 40);
+        context.fill(getX() + 1, y3 + 1, x3 + 1, y4 - 1, color.getRGB());
     }
 
     @Override
     protected void updateMessage() {
+    }
+
+    private void updateColor(EntityType entityType, ColorType colorType, float newValue) {
+        float[] temp = null;
+
+        switch (entityType) {
+            case PLAYER -> temp = ModConfig.configData.getPlayerColor();
+            case PASSIVE -> temp = ModConfig.configData.getPassiveColor();
+            case MONSTER -> temp = ModConfig.configData.getMonsterColor();
+            case DROP -> temp = ModConfig.configData.getDropColor();
+            case PROJECTILE -> temp = ModConfig.configData.getProjectileColor();
+        }
+
+        if (temp != null) {
+            switch (colorType) {
+                case RED -> temp[0] = newValue;
+                case GREEN -> temp[1] = newValue;
+                case BLUE -> temp[2] = newValue;
+                case ALPHA -> temp[3] = newValue;
+            }
+            setEntityColor(entityType, temp);
+        }
+    }
+
+    private void setEntityColor(EntityType entityType, float[] color) {
+        switch (entityType) {
+            case PLAYER -> ModConfig.configData.setPlayerColor(color);
+            case PASSIVE -> ModConfig.configData.setPassiveColor(color);
+            case MONSTER -> ModConfig.configData.setMonsterColor(color);
+            case DROP -> ModConfig.configData.setDropColor(color);
+            case PROJECTILE -> ModConfig.configData.setProjectileColor(color);
+        }
     }
 
 }

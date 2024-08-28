@@ -7,6 +7,7 @@ import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
@@ -68,7 +69,7 @@ public class EntityRendererDispatcherMixin {
                 b = ModConfig.configData.getDropColor()[2] / 255.0f;
                 a = ModConfig.configData.getDropColor()[3] / 255.0f;
             } else return;
-        } else if (entity instanceof ProjectileEntity) {
+        } else if (entity instanceof ProjectileEntity || entity instanceof ExperienceOrbEntity) {
             if (ModConfig.configData.isEnableRenderProjectile()) {
                 r = ModConfig.configData.getProjectileColor()[0] / 255.0f;
                 g = ModConfig.configData.getProjectileColor()[1] / 255.0f;

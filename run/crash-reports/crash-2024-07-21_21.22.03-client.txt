@@ -5,8 +5,8 @@ Time: 2024-07-21 21:22:03
 Description: Rendering screen
 
 java.lang.NullPointerException: Cannot read field "bodyYaw" because "entity" is null
-	at net.ihor.changecolor.menu.entity.RenderEntityToMenu.drawEntity2(RenderEntityToMenu.java:36)
-	at net.ihor.changecolor.menu.entity.RenderEntityToMenu.drawEntity(RenderEntityToMenu.java:70)
+	at net.ihor.changecolor.util.Render.drawEntity2(RenderEntityToMenu.java:36)
+	at net.ihor.changecolor.util.Render.drawEntity(RenderEntityToMenu.java:70)
 	at net.ihor.changecolor.menu.ProjectileSettingsMenu.render(ProjectileSettingsMenu.java:88)
 	at net.minecraft.client.gui.screen.Screen.renderWithTooltip(Screen.java:110)
 	at net.minecraft.client.render.GameRenderer.render(GameRenderer.java:945)
@@ -25,8 +25,8 @@ A detailed walkthrough of the error, its code path and all known details is as f
 -- Head --
 Thread: Render thread
 Stacktrace:
-	at net.ihor.changecolor.menu.entity.RenderEntityToMenu.drawEntity2(RenderEntityToMenu.java:36)
-	at net.ihor.changecolor.menu.entity.RenderEntityToMenu.drawEntity(RenderEntityToMenu.java:70)
+	at net.ihor.changecolor.util.Render.drawEntity2(RenderEntityToMenu.java:36)
+	at net.ihor.changecolor.util.Render.drawEntity(RenderEntityToMenu.java:70)
 	at net.ihor.changecolor.menu.ProjectileSettingsMenu.render(ProjectileSettingsMenu.java:88)
 	at net.minecraft.client.gui.screen.Screen.renderWithTooltip(Screen.java:110)
 

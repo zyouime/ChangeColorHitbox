@@ -1,7 +1,7 @@
 {
   "playerColor": [
     255.0,
-    150.79327,
+    139.75961,
     95.625,
     255.0
   ],
@@ -9,7 +9,7 @@
   "monsterColor": [
     128.72597,
     30.649038,
-    255.0,
+    134.85577,
     255.0
   ],
   "enableRenderMonster": true,
@@ -30,7 +30,7 @@
   "projectileColor": [
     255.0,
     255.0,
-    127.5,
+    39.23077,
     255.0
   ],
   "enableRenderProjectile": true,

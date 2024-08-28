@@ -91,7 +91,6 @@ public class MainMenu extends Screen {
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float tickDelta) {
-        ModConfig.loadConfig();
         this.renderBackground(context);
         context.drawCenteredTextWithShadow(this.textRenderer, this.title, width / 2, height / 2 - 115, Color.WHITE.getRGB());
         Color BACKGROUND = new Color(42, 39, 39, 200);
